@@ -2,8 +2,11 @@ import "server-only";
 
 import { currentUser } from "@clerk/nextjs/server";
 import { prisma } from "./prisma";
+import { unstable_noStore as noStore } from 'next/cache';
 
 export async function getUserCredits(){
+    noStore();
+
     try{
         const user = await currentUser();
 
